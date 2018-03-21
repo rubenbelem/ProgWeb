@@ -1,15 +1,86 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Formulário de contato</title>
-    </head>
-    <body>
-        <form class="contact-form" action="index.html" method="post">
-            <fieldset>
-                <legend>Submeta seu currículo vitae</legend>
-                <input type="file" name="curriculo" value="">
-            </fieldset>
-        </form>
-    </body>
+
+<head>
+	<meta charset="utf-8">
+	<title>Formulário de contato</title>
+	<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<style media="screen">
+		label {
+			font-weight: normal !important;
+		}
+	</style>
+	<div class="container" style="padding: 40px;">
+		<h1 style="font-family: 'IBM Plex Sans Condensed', sans-serif;">Formulário de contato</h1>
+		<p>Por favor, preencha o formulário abaixo e clique no botão Enviar Mensagem. Agradecemos por seu contato.</p>
+		<form class="contact-form" action="index.html" method="post">
+			<fieldset class="form-group">
+				<legend>Dados Básicos</legend>
+				<div class="row">
+					<div class="col-md-6">
+						<label for="name">Nome </label>
+						<input type="text" id="name" class="form-control" value="">
+					</div>
+					<div class="col-md-6">
+						<label for="email">E-mail </label>
+						<input type="text" id="email" placeholder="seunome@email.com" class="form-control" value="">
+					</div>
+				</div>
+				<label for="website">Website </label>
+				<input type="text" id="website" class="form-control" value="http://">
+			</fieldset>
+
+			<fieldset class="form-group">
+				<legend>Seu curso no instituto de Computação</legend>
+				<div >
+					<input class="form-check-input" type="radio" name="radiobtn" id="cc">
+					<label class="form-check-label" for="cc">Ciência da Computação</label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="radiobtn" id="si">
+					<label class="form-check-label" for="si">Sistemas de Informação</label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="radiobtn" id="ec">
+					<label class="form-check-label" for="ec">Engenharia da Computação</label>
+				</div>
+			</fieldset>
+
+			<fieldset class="form-group">
+				<legend>Assinale as linguagens já utilizadas por você:</legend>
+
+				<div style="display:block;">
+					<label class="checkbox-inline"><input type="checkbox" value="">Java</label>
+					<label class="checkbox-inline"><input type="checkbox" value="">C</label>
+					<label class="checkbox-inline"><input type="checkbox" value="">C++</label>
+					<label class="checkbox-inline"><input type="checkbox" value="">Perl</label>
+					<label class="checkbox-inline"><input type="checkbox" value="">Python</label>
+					<label class="checkbox-inline"><input type="checkbox" value="">Javascript</label>
+				</div>
+			</fieldset>
+
+			<fieldset class="form-group">
+				<legend>Dados Complementares</legend>
+
+				<div style="display:block;">
+					<label class="checkbox-inline"><input type="checkbox" value="">Java</label>
+					<label class="checkbox-inline"><input type="checkbox" value="">C</label>
+					<label class="checkbox-inline"><input type="checkbox" value="">C++</label>
+					<label class="checkbox-inline"><input type="checkbox" value="">Perl</label>
+					<label class="checkbox-inline"><input type="checkbox" value="">Python</label>
+					<label class="checkbox-inline"><input type="checkbox" value="">Javascript</label>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</body>
+
 </html>
