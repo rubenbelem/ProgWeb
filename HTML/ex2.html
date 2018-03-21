@@ -40,7 +40,7 @@
 
 			<fieldset class="form-group">
 				<legend>Seu curso no instituto de Computação</legend>
-				<div >
+				<div>
 					<input class="form-check-input" type="radio" name="radiobtn" id="cc">
 					<label class="form-check-label" for="cc">Ciência da Computação</label>
 				</div>
@@ -70,16 +70,63 @@
 			<fieldset class="form-group">
 				<legend>Dados Complementares</legend>
 
-				<div style="display:block;">
-					<label class="checkbox-inline"><input type="checkbox" value="">Java</label>
-					<label class="checkbox-inline"><input type="checkbox" value="">C</label>
-					<label class="checkbox-inline"><input type="checkbox" value="">C++</label>
-					<label class="checkbox-inline"><input type="checkbox" value="">Perl</label>
-					<label class="checkbox-inline"><input type="checkbox" value="">Python</label>
-					<label class="checkbox-inline"><input type="checkbox" value="">Javascript</label>
+				<div class="col-sm-3">
+					<label for="favourite-color" class="col-form-label">Cor favorita: </label>
+					<div style="">
+						<input class="form-control" type="color" value="#563d7c" id="favourite-color">
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label for="birthdate" class="col-form-label">Data de nascimento</label>
+					<div>
+						<input class="form-control" type="date" id="birthdate">
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label for="entranceyear" class="col-form-label">Ano de entrada no ICOMP</label>
+					<div>
+						<input class="form-control" type="number" value="2018" id="entranceyear">
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label for="gradeforsite" class="col-form-label">Nota para este site</label>
+					<div>
+						<input class="form-control" type="number" value="10" id="gradeforsite">
+					</div>
 				</div>
 			</fieldset>
+
+			<fieldset class="form-group">
+				<legend>Área de atuação</legend>
+				<select id="studyfield" class="form-control" style="width:230px;">
+        			<option selected>Banco de Dados</option>
+        			<option>Recuperação de Informação</option>
+					<option>Computação Gráfica</option>
+					<option>Redes de Computadores</option>
+					<option>Aprendizado de Máquina</option>
+					<option><i>Deep Learning</i></option>
+					<option>Computação Cognitiva</option>
+					<option>Engenharia de Software</option>
+					<option>Otimização</option>
+      			</select>
+			</fieldset>
+
+			<fieldset class="form-group">
+				<legend>Submeta seu Currículo Vitae</legend>
+    			<input type="file" class="form-control-file" id="curriculuminput">
+			</fieldset>
+
+			<fieldset class="form-group">
+				<legend>Digite sua mensagem</legend>
+    			<textarea class="form-control" rows="3" value="Este é o valor padrão!"></textarea>
+			</fieldset>
 		</form>
+
+		<button type="button" class="btn btn-primary">Resetar Dados</button>
+		<button type="button" class="btn btn-success">Enviar Mensagem</button>
 	</div>
 </body>
 
