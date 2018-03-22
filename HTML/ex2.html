@@ -2,132 +2,151 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<title>Formulário de contato</title>
-	<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Formulário de contato</title>
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-	<style media="screen">
-		label {
-			font-weight: normal !important;
-		}
-	</style>
-	<div class="container" style="padding: 40px;">
-		<h1 style="font-family: 'IBM Plex Sans Condensed', sans-serif;">Formulário de contato</h1>
-		<p>Por favor, preencha o formulário abaixo e clique no botão Enviar Mensagem. Agradecemos por seu contato.</p>
-		<form class="contact-form" action="index.html" method="post">
-			<fieldset class="form-group">
-				<legend>Dados Básicos</legend>
-				<div class="row">
-					<div class="col-md-6">
-						<label for="name">Nome </label>
-						<input type="text" id="name" class="form-control" value="">
-					</div>
-					<div class="col-md-6">
-						<label for="email">E-mail </label>
-						<input type="text" id="email" placeholder="seunome@email.com" class="form-control" value="">
-					</div>
-				</div>
-				<label for="website">Website </label>
-				<input type="text" id="website" class="form-control" value="http://">
-			</fieldset>
+    <style media="screen">
+        label {
+            font-weight: normal !important;
+        }
 
-			<fieldset class="form-group">
-				<legend>Seu curso no instituto de Computação</legend>
-				<div>
-					<input class="form-check-input" type="radio" name="radiobtn" id="cc">
-					<label class="form-check-label" for="cc">Ciência da Computação</label>
-				</div>
-				<div class="form-check">
-					<input class="form-check-input" type="radio" name="radiobtn" id="si">
-					<label class="form-check-label" for="si">Sistemas de Informação</label>
-				</div>
-				<div class="form-check">
-					<input class="form-check-input" type="radio" name="radiobtn" id="ec">
-					<label class="form-check-label" for="ec">Engenharia da Computação</label>
-				</div>
-			</fieldset>
+        legend {
+            margin-top: 30px;
+        }
+    </style>
+    <div class="container" style="padding: 0 20px 60px 20px; margin-top: 30px;">
+        <h1 style="font-family: 'IBM Plex Sans Condensed', sans-serif; margin-bottom: 30px; font-size: 2.7em;">Formulário de contato</h1>
+        <p style="font-size: 1.1em;">Por favor, preencha o formulário abaixo e clique no botão Enviar Mensagem. Agradecemos por seu contato.</p>
+        <form class="contact-form" action="index.html" style="margin-bottom: 30px;" method="post">
+            <fieldset class="form-group">
+                <legend>Dados Básicos</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="name">Nome </label>
+                        <input type="text" id="name" class="form-control" value="">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="email">E-mail </label>
+                        <input type="text" id="email" placeholder="seunome@email.com" class="form-control" value="">
+                    </div>
+                </div>
 
-			<fieldset class="form-group">
-				<legend>Assinale as linguagens já utilizadas por você:</legend>
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-md-6">
+                        <label for="website">Website </label>
+                        <input type="text" id="website" class="form-control" value="http://">
+                    </div>
+                </div>
+            </fieldset>
 
-				<div style="display:block;">
-					<label class="checkbox-inline"><input type="checkbox" value="">Java</label>
-					<label class="checkbox-inline"><input type="checkbox" value="">C</label>
-					<label class="checkbox-inline"><input type="checkbox" value="">C++</label>
-					<label class="checkbox-inline"><input type="checkbox" value="">Perl</label>
-					<label class="checkbox-inline"><input type="checkbox" value="">Python</label>
-					<label class="checkbox-inline"><input type="checkbox" value="">Javascript</label>
-				</div>
-			</fieldset>
+            <fieldset class="form-group">
+                <legend>Seu curso no instituto de Computação</legend>
+                <div>
+                    <input class="form-check-input" type="radio" name="radiobtn" id="cc">
+                    <label class="form-check-label" for="cc">Ciência da Computação</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radiobtn" id="si">
+                    <label class="form-check-label" for="si">Sistemas de Informação</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radiobtn" id="ec">
+                    <label class="form-check-label" for="ec">Engenharia da Computação</label>
+                </div>
+            </fieldset>
 
-			<fieldset class="form-group">
-				<legend>Dados Complementares</legend>
+            <fieldset class="form-group">
+                <legend>Assinale as linguagens já utilizadas por você:</legend>
 
-				<div class="col-sm-3">
-					<label for="favourite-color" class="col-form-label">Cor favorita: </label>
-					<div style="">
-						<input class="form-control" type="color" value="#563d7c" id="favourite-color">
-					</div>
-				</div>
+                <div style="display:block;">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="">Java</label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="">C</label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="">C++</label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="">Perl</label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="">Python</label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="">Javascript</label>
+                </div>
+            </fieldset>
 
-				<div class="col-sm-3">
-					<label for="birthdate" class="col-form-label">Data de nascimento</label>
-					<div>
-						<input class="form-control" type="date" id="birthdate">
-					</div>
-				</div>
+            <fieldset class="form-group">
+                <legend>Dados Complementares</legend>
 
-				<div class="col-sm-3">
-					<label for="entranceyear" class="col-form-label">Ano de entrada no ICOMP</label>
-					<div>
-						<input class="form-control" type="number" value="2018" id="entranceyear">
-					</div>
-				</div>
+                <div class="col-sm-3">
+                    <label for="favourite-color" class="col-form-label">Cor favorita: </label>
+                    <div style="">
+                        <input class="form-control" type="color" value="#563d7c" id="favourite-color">
+                    </div>
+                </div>
 
-				<div class="col-sm-3">
-					<label for="gradeforsite" class="col-form-label">Nota para este site</label>
-					<div>
-						<input class="form-control" type="number" value="10" id="gradeforsite">
-					</div>
-				</div>
-			</fieldset>
+                <div class="col-sm-3">
+                    <label for="birthdate" class="col-form-label">Data de nascimento</label>
+                    <div>
+                        <input class="form-control" type="date" id="birthdate">
+                    </div>
+                </div>
 
-			<fieldset class="form-group">
-				<legend>Área de atuação</legend>
-				<select id="studyfield" class="form-control" style="width:230px;">
-        			<option selected>Banco de Dados</option>
-        			<option>Recuperação de Informação</option>
-					<option>Computação Gráfica</option>
-					<option>Redes de Computadores</option>
-					<option>Aprendizado de Máquina</option>
-					<option><i>Deep Learning</i></option>
-					<option>Computação Cognitiva</option>
-					<option>Engenharia de Software</option>
-					<option>Otimização</option>
-      			</select>
-			</fieldset>
+                <div class="col-sm-3">
+                    <label for="entranceyear" class="col-form-label">Ano de entrada no ICOMP</label>
+                    <div>
+                        <input class="form-control" type="number" value="2018" id="entranceyear">
+                    </div>
+                </div>
 
-			<fieldset class="form-group">
-				<legend>Submeta seu Currículo Vitae</legend>
-    			<input type="file" class="form-control-file" id="curriculuminput">
-			</fieldset>
+                <div class="col-sm-3">
+                    <label for="gradeforsite" class="col-form-label">Nota para este site</label>
+                    <div>
+                        <input class="form-control" type="number" value="10" id="gradeforsite">
+                    </div>
+                </div>
+            </fieldset>
 
-			<fieldset class="form-group">
-				<legend>Digite sua mensagem</legend>
-    			<textarea class="form-control" rows="3" value="Este é o valor padrão!"></textarea>
-			</fieldset>
-		</form>
+            <fieldset class="form-group">
+                <legend>Área de atuação</legend>
+                <select id="studyfield" class="form-control" style="width:230px;">
+                    <option selected>Banco de Dados</option>
+                    <option>Recuperação de Informação</option>
+                    <option>Computação Gráfica</option>
+                    <option>Redes de Computadores</option>
+                    <option>Aprendizado de Máquina</option>
+                    <option>
+                        <i>Deep Learning</i>
+                    </option>
+                    <option>Computação Cognitiva</option>
+                    <option>Engenharia de Software</option>
+                    <option>Otimização</option>
+                </select>
+            </fieldset>
 
-		<button type="button" class="btn btn-primary">Resetar Dados</button>
-		<button type="button" class="btn btn-success">Enviar Mensagem</button>
-	</div>
+            <fieldset class="form-group">
+                <legend>Submeta seu Currículo Vitae</legend>
+                <input type="file" class="form-control-file" id="curriculuminput">
+            </fieldset>
+
+            <fieldset class="form-group">
+                <legend>Digite sua mensagem</legend>
+                <textarea class="form-control" rows="3" value="Este é o valor padrão!"></textarea>
+            </fieldset>
+        </form>
+
+        <div>
+            <button type="button" class="btn btn-primary">Resetar Dados</button>
+            <button type="button" class="btn btn-success">Enviar Mensagem</button>
+        </div>
+    </div>
 </body>
 
 </html>
