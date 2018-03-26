@@ -1,0 +1,37 @@
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 100px;
+    margin-left: 100px;
+    background-color: rgb(209, 208, 85);
+    background-image: url(../img/backgroundrome.jpg);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.floater {
+	text-align: center;
+	width: 300px;
+	background-color: rgba(73, 131, 191, 0.8);
+	padding: 20px;
+	border: 6px solid rgba(201, 223, 251, 0.6);
+	border-radius: 10px;
+	color: rgb(255, 255, 255);
+	font-family: IBM Plex Sans Condensed, sans-serif;
+	box-shadow: 4px 4px 10px 2px rgb(52, 52, 52);
+	position: relative;
+	top: 100px;
+	left: 150px;
+
+}
+
+.floater > p {
+	font-family: Roboto;
+	font-weight: 400;
+}
+
+body, html {
+    height: 99%;
+}
