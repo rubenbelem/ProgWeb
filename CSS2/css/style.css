@@ -27,6 +27,10 @@
 
 }
 
+.floater:hover {
+    background-color: rgba(221, 195, 78, 0.35);
+}
+
 .floater > p {
 	font-family: Roboto;
 	font-weight: 400;
