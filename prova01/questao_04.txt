@@ -1,0 +1,19 @@
+Em Javascript, não interessando o local de definição de uma variável em um escopo, é possível *referenciá-la* em qualquer lugar desse escopo em que ela foi definida sem que haja um erro de "variável não definida", pois o interpretador do Javascript move a declaração das variáveis para o início. Isso é chamado hoisting.
+
+Porém, o hoisting move apenas a *declaração* da variável. Ou seja, se uma variável foi declarada no formato "var a = 5", o hoisting move para o topo do escopo apenas a declaração da variável <a> , sem o valor 5 atribuído.
+
+Exemplo:
+
+console.log(a);
+
+var a = 5;
+
+console.log(a);
+
+..........................
+
+Nesse exemplo, a saída é:
+undefined
+5
+
+A declaração da variável <a> foi feita, mas sem o valor 5 atribuído, por isso não ocorre um ReferenceError no primeiro console.log, e também por isso o valor impresso é undefined. Após isso, acontece a atribuição, e o valor impresso é 5.
