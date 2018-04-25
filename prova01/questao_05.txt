@@ -1,0 +1,121 @@
+commit 0d449a4675dc232aaccbaaf0df1376b2bceccd71
+Author: Rúben Belém <rubenbelem@gmail.com>
+Date:   Wed Apr 25 08:42:47 2018 -0400
+
+    Terceira questão
+
+commit d4a6639a5904ae2e96278fca97d0223f89cfe785
+Author: Rúben Belém <rubenbelem@gmail.com>
+Date:   Wed Apr 25 08:37:11 2018 -0400
+
+    Segunda questão
+
+commit 68553ef9ace0e3dedae6ebd00ae82b0496660e60
+Author: Rúben Belém <rubenbelem@gmail.com>
+Date:   Wed Apr 25 08:15:35 2018 -0400
+
+    Primeira questão
+
+commit 593dbf086d42ee1cc259ca7090ef148029b90d7e
+Author: rubenbelem <rubenbelem@gmail.com>
+Date:   Mon Apr 16 09:46:39 2018 -0400
+
+    Visual do JS4 melhorado
+
+commit b8986e9a7ab8db089cbfa405ecc5f9e29b7dc276
+Author: rubenbelem <rubenbelem@gmail.com>
+Date:   Mon Apr 16 09:27:53 2018 -0400
+
+    Exercício JS4 melhorado com tecla enter
+
+commit ebf5a229a25799d0b6947283f1d678589ee0ffa5
+Author: Ponciano7 <fpmn@icomp.ufam.edu.br>
+Date:   Mon Apr 16 09:05:31 2018 -0400
+
+    Exercício JS4 terminado
+
+commit 59a1258fed653b50c43a1a5cb887ed84c3049035
+Author: rubenbelem <rubenbelem@gmail.com>
+Date:   Mon Apr 9 09:44:32 2018 -0400
+
+    Exercício JS2
+
+commit 0e12529253a0500b840ac7c72133c727266ad340
+Author: Rúben Belém <rubenbelem@gmail.com>
+Date:   Wed Apr 4 09:28:37 2018 -0400
+
+    Exercício 6 (JS1) terminado
+
+commit b3468dcffe19be5ae4a83bd875bbee0801ee0ce8
+Author: Rúben Belém <rubenbelem@gmail.com>
+Date:   Wed Mar 28 09:47:17 2018 -0400
+
+    Exercício 3 refeito
+
+commit bd0ee45129ecee65c6b7e3beb43adc61aff4eec0
+Author: Rúben Belém <rubenbelem@gmail.com>
+Date:   Wed Mar 28 09:32:05 2018 -0400
+
+    Exercício 5 (CSS3) terminado
+
+commit d0e3de7a12854e2f07bcd9af39dbf5d9d2da9bef
+Author: Rúben Belém <rubenbelem@gmail.com>
+Date:   Wed Mar 28 09:15:19 2018 -0400
+
+    Diretórios reorganizados
+
+commit 576a717a96c66e59e972e2a8354a2466bd391b3f
+Author: Rúben Belém <rubenbelem@gmail.com>
+Date:   Wed Mar 28 09:13:21 2018 -0400
+
+    Exercício 4 refeito
+
+commit 42c81bc081de1beca5abf1ed47dd6b9447859236
+Author: Erick <elb2@icomp.ufam.edu.br>
+Date:   Mon Mar 26 09:48:42 2018 -0400
+
+    Exercício 4 terminado
+
+commit 116de52be6c413fef6737d3213169d56e90e3498
+Author: Erick <elb2@icomp.ufam.edu.br>
+Date:   Mon Mar 26 09:18:27 2018 -0400
+
+    Exercício 3 terminado e exercício 4 começando
+
+commit 5468a011a08f9a33d73ee9bf2a6a534ffbee5997
+Author: Rúben Belém <rubenbelem@gmail.com>
+Date:   Thu Mar 22 08:17:31 2018 -0400
+
+    Melhorias no design do ex2
+
+commit cbc0536d6914acac2df73055c88a48bf6a8ad62a
+Author: calsUFAM <cals@icomp.ufam.edu.br>
+Date:   Wed Mar 21 09:46:46 2018 -0400
+
+    Exercício 2 terminado
+
+commit b4dcf9f85c4f031215b2780a00aa2a2026e45efc
+Author: calsUFAM <cals@icomp.ufam.edu.br>
+Date:   Wed Mar 21 09:13:36 2018 -0400
+
+    Metade do formulário terminado (ex2)
+
+commit 3025dc4e9778aeb024e66564c9f1885217c99890
+Author: calsUFAM <cals@icomp.ufam.edu.br>
+Date:   Wed Mar 21 08:20:10 2018 -0400
+
+    Início do exercício 2
+
+commit 84b587093170a5338ff6620fb19c829f3c888ffd
+Author: Rúben Belém <rubenbelem@gmail.com>
+Date:   Mon Mar 19 09:42:45 2018 -0400
+
+    First commit.
+
+
+a) 
+O comando git status serve para verificar o status do repositório local, em relação ao staging area, index, repositório remoto, etc.
+Ele mostra os arquivos que ainda não estão incluídos na realização de um commit (untracked file). Ele também mostra de forma diferente esses mesmos arquivos quando tal inclusão no commit é feita (usando o git add).
+
+b)
+Para definir regras que permitem o git ignorar diretórios, arquivos (por nome ou tipo), dentre outros. Esses arquivos, quando modificados, não são considerados como untracked files, e são excluídos do versionamento (uma razão a mais para se tomar cuidado com os arquivos e diretórios incluídos no .gitignore) .
