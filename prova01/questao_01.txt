@@ -1,0 +1,17 @@
+Primeiro erro:
+
+Erro de síntaxe de comentário na linha 04.
+O comentário em html precisa ser no formato <!--conteudo-->.
+
+Segundo erro:
+
+No CSS definido no <head>, há erro de síntaxe na definição da propriedade color, na linha 08.
+Em vez de =, deveria haver um : .
+
+Terceiro erro:
+
+No CSS definido no <head>, há erro de síntaxe na definição da propriedade background-color, similar ao segundo erro, na linha 09.
+Em vez de =, deveria haver um : .
+
+Quarto erro:
+A palavra that não é definida como um statement do Javascript. O erro ocorre na linha 25. Em vez de that, deveria ser utilizado o this.
