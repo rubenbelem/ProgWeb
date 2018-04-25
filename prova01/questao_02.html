@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Cálculo de Volume da esfera</title>
+    </head>
+    
+    <script>
+        var area;
+        var radius;
+        var volume;
+
+        var calc = function() {
+            radius = parseFloat(document.getElementsByName('radiusInput')[0].value);
+            area = 4 * Math.PI * Math.pow(radius, 2);
+            volume = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
+            document.getElementsByName('areaInput')[0].value = area.toFixed(2).toString();
+            let volumeInput = document.getElementsByName('volumeInput')[0];
+            volumeInput.value = volume.toFixed(2).toString();
+        };
+
+    </script>
+
+	<body>
+		<style>
+			label {
+				display: inline-block;
+				text-align: right;
+				width: 150px;
+			}
+            div {
+                margin-bottom: 8px;
+            }
+		</style>
+		<div>
+			<label for="radiusInput">Raio da Esfera</label>
+			<input type="text" name="radiusInput" value="1">
+			<input type="button" onclick="calc()" name="btnCalcular" value="Calcular!">
+		</div>
+
+		<div>
+			<label for="areaInput">Área</label>
+			<input type="text" disabled="false" name="areaInput" value="1">
+		</div>
+
+		<div>
+			<label for="volumeInput">Volume</label>
+			<input type="text" disabled="false" name="volumeInput" value="1">
+		</div>
+	</body>
+</html>
