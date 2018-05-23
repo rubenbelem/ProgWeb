@@ -48,6 +48,11 @@
     position: absolute;
 }
 
+.dog{
+    background-image: url(../imgs/dog/dog.gif);
+    position: absolute;
+}
+
 .bush {
     background-image: url(../imgs/bush.png);
     position: absolute;

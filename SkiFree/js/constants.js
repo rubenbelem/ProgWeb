@@ -10,10 +10,11 @@ const constants = {
     SKIER_MAX_SPEED: 5,
     OBSTACLE_MAP: [
         { name: 'tree', probability: 20 }, 
-        { name: 'rock', probability: 5 },
-        { name: 'tall-tree', probability: 4 },
-        { name: 'burning-bush', probability: 30 },
+        { name: 'rock', probability: 7 },
+        { name: 'tall-tree', probability: 7 },
+        { name: 'burning-bush', probability: 3 },
         { name: 'bush', probability: 10 },
-        { name: 'log', probability: 5 }
+        { name: 'log', probability: 5 },
+        { name: 'dog', probability: 1 }
     ]
 };
