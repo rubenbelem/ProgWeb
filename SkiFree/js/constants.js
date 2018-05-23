@@ -1,6 +1,6 @@
 const constants = {
-	SIZE_X: 300,
-	SIZE_Y: 400,
+	SIZE_X: 700,
+	SIZE_Y: 800,
 	SKIER_DIRECTION: {
 		FRONT: 'skier-front',
 		LEFT: 'skier-left',
