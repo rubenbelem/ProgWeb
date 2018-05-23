@@ -1,25 +1,25 @@
-.para-direita {
+.skier-right {
    background-image: url(skier.png);
    background-position: -25px -6px;
    width: 22px;
    height: 28px;
 }
 
-.para-esquerda {
+.skier-left {
    background-image: url(skier.png);
    background-position: -26px -43px;
    width: 22px;
    height: 28px;
 }
 
-.para-frente {
+.skier-front {
    background-image: url(skier.png);
    background-position: -67px -2px;
    width: 15px;
    height: 32px;
 }
 
-.arvore {
+.tree {
    background-image: url(obstacles.png);
    background-position: -0px -31px;   
    width: 28px;
@@ -27,7 +27,7 @@
    position: absolute;
 }
 
-#montanha {
+#mountain {
    border: 1px solid black;
    position: relative;
    overflow: hidden;

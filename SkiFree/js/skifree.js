@@ -1,77 +1,68 @@
-(function () {
-	
+(function() {
 	const FPS = 50;
-	const TAMX = 300;
-	const TAMY = 400;
-	const PROB_ARVORE = 2;
+	const SIZE_X = 300;
+	const SIZE_Y = 400;
+	const TREE_PROB = 2;
 	var gameLoop;
-	var montanha;
+	var mountain;
 	var skier;
-	var direcoes = ['para-esquerda','para-frente','para-direita'];
-	var arvores = [];
-	
-	function init () {
-		montanha = new Montanha();
+	var directions = ['skier-left', 'skier-front', 'skier-right'];
+	var trees = [];
+
+	function init() {
+		mountain = new Mountain(SIZE_X, SIZE_Y);
 		skier = new Skier();
-		gameLoop = setInterval(run, 1000/FPS);
+		gameLoop = setInterval(run, 1000 / FPS);
 	}
-	
-	window.addEventListener('keydown', function (e) {
-		if (e.key === 'a') skier.mudarDirecao(-1);
-		else if (e.key === 'd') skier.mudarDirecao(1);
+
+	window.addEventListener('keydown', function(e) {
+		if (e.key === 'a') skier.changeDirection(-1);
+		else if (e.key === 'd') skier.changeDirection(1);
 	});
-	
-	function Montanha () {
-		this.element = document.getElementById('montanha');
-		this.element.style.width = TAMX + 'px';
-		this.element.style.height = TAMY + 'px';
-	}
-	
+
 	function Skier() {
-		
 		this.element = document.getElementById('skier');
-		this.direcao = 1; //0-esquerda;1-frente;2-direita
-		this.element.className = 'para-frente';
+		this.direction = 1; //0-esquerda;1-frente;2-direita
+		this.element.className = 'skier-front';
 		this.element.style.top = '30px';
-		this.element.style.left = parseInt(TAMX/2)-7 + 'px';
-		
-		this.mudarDirecao = function (giro) {
-			if (this.direcao + giro >=0 && this.direcao + giro <=2) {
-				this.direcao += giro;
-				this.element.className = direcoes[this.direcao];
+		this.element.style.left = parseInt(SIZE_X / 2) - 7 + 'px';
+
+		this.changeDirection = function(giro) {
+			if (this.direction + giro >= 0 && this.direction + giro <= 2) {
+				this.direction += giro;
+				this.element.className = directions[this.direction];
 			}
 		};
-		
-		this.andar = function () {
-			if (this.direcao === 0) {
-				this.element.style.left = (parseInt(this.element.style.left)-1) + 'px';
+
+		this.walk = function() {
+			if (this.direction === 0) {
+				this.element.style.left = parseInt(this.element.style.left) - 1 + 'px';
 			}
-			if (this.direcao === 2) {
-				this.element.style.left = (parseInt(this.element.style.left)+1) + 'px';
+			if (this.direction === 2) {
+				this.element.style.left = parseInt(this.element.style.left) + 1 + 'px';
 			}
-		}
+		};
 	}
-	
-	function Arvore() {
+
+	function Tree() {
 		this.element = document.createElement('div');
-		montanha.element.appendChild(this.element);
-		this.element.className = 'arvore';
-		this.element.style.top = TAMY + 'px';
-		this.element.style.left = Math.floor(Math.random() * TAMX) + 'px';
+		mountain.element.appendChild(this.element);
+		this.element.className = 'tree';
+		this.element.style.top = SIZE_Y + 'px';
+		this.element.style.left = Math.floor(Math.random() * SIZE_X) + 'px';
 	}
-	
-	function run () {
+
+	function run() {
 		var random = Math.floor(Math.random() * 1000);
-		if (random <= PROB_ARVORE*10) {
-			var arvore = new Arvore();
-			arvores.push(arvore);
+		if (random <= TREE_PROB * 10) {
+			var tree = new Tree();
+			trees.push(tree);
 		}
-		arvores.forEach(function (a) {
-			a.element.style.top = (parseInt(a.element.style.top)-1) + 'px';
+		trees.forEach(function(a) {
+			a.element.style.top = parseInt(a.element.style.top) - 1 + 'px';
 		});
-		skier.andar();
+		skier.walk();
 	}
-	
+
 	init();
-	
 })();
