@@ -1,5 +1,4 @@
 (function() {
-	const FPS = 60;
 	const TREE_PROB = 4;
 	let gameLoop;
 	let mountain;
@@ -11,7 +10,7 @@
 	let debugElement;
 
 	function calculateDistanceTraveled(distanceTraveledinPixels) {
-		return distanceTraveledinPixels / FPS * 10;
+		return distanceTraveledinPixels / constants.FPS * 10;
 	}
 
 	function updateDistanceTraveledOnScoreBoard() {
@@ -23,12 +22,13 @@
 		mountain = new Mountain();
 		skier = new Skier();
 
-		gameLoop = setInterval(run, 1000 / FPS);
+		gameLoop = setInterval(run, 1000 / constants.FPS);
 		cycle = 1;
 		debugElement = document.getElementById('debug');
 		traveledDistanceElement = document.getElementById('traveledDistance');
 		speedVisualizationElement = document.getElementById('speedVisualization');
 		updateDistanceTraveledOnScoreBoard();
+		
 		setInterval(updateDistanceTraveledOnScoreBoard, 1000);
 	}
 

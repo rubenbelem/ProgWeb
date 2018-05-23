@@ -12,12 +12,12 @@ class Skier {
 		this.isTurboOn = false;
 		this.element = document.getElementById('skier');
 		this.direction = constants.SKIER_DIRECTION.FRONT;
-        this.element.className = this.direction;
-        
-        //Coordenadas
-        this.top = parseInt(constants.SIZE_Y / 2) - 100;
-        this.left = parseInt(constants.SIZE_X / 2);
-        
+		this.element.className = this.direction;
+		this.timeFall = 0.0;
+		//Coordenadas
+		this.top = parseInt(constants.SIZE_Y / 2) - 100;
+		this.left = parseInt(constants.SIZE_X / 2);
+		
 		this.updateGraphicPosition();
 		this.walking = true;
 		this.canStandUp = false;
@@ -71,15 +71,27 @@ class Skier {
 		return false;
 	}
 
+	fallAnimation() {
+		
+	}
+
 	sufferTreeHit() {
 		this.isTurboOn = false;
 		this.walking = false;
 		this.element.className = 'skier-ouch';
 		this.canStandUp = false;
 		this.speed = constants.SKIER_MIN_SPEED;
+		this.loopFallAnimation = setInterval(() => {
+			console.log(this.timeFall / 60.0);
+			if ((this.timeFall / 60.0 * 1000) >= constants.FALL_ANIMATION_DURATION) {
+				clearInterval(this.loopFallAnimation);
+			}
+			this.timeFall += 1.0;
+		}, 1000 / constants.FPS);
+
 		setTimeout(() => {
 			this.element.className ='skier-after-tree-hit'; 
-			setTimeout(() => this.canStandUp = true, 200);
+			setTimeout(() => { this.canStandUp = true; this.timeFall = 0.0; }, 200);
 		}, 900);
 	}
 
@@ -108,8 +120,8 @@ class Skier {
 		}
 		if (this.direction === constants.SKIER_DIRECTION.RIGHT) {
 			this.left += this.speed * 0.8;
-        }
-        
+		}
+		
 		this.updateGraphicPosition();
 	}
 }
