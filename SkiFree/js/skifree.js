@@ -6,9 +6,9 @@
 	let skier;
 	let trees = [];
 	let cycle;
-    let traveledDistanceElement;
-    let speedVisualizationElement;
-    let debugElement;
+	let traveledDistanceElement;
+	let speedVisualizationElement;
+	let debugElement;
 
 	function calculateDistanceTraveled(distanceTraveledinPixels) {
 		return distanceTraveledinPixels / FPS * 10;
@@ -21,13 +21,13 @@
 
 	function init() {
 		mountain = new Mountain();
-        skier = new Skier();
+		skier = new Skier();
 
 		gameLoop = setInterval(run, 1000 / FPS);
-        cycle = 1;
-        debugElement = document.getElementById('debug');
-        traveledDistanceElement = document.getElementById('traveledDistance');
-        speedVisualizationElement = document.getElementById('speedVisualization');
+		cycle = 1;
+		debugElement = document.getElementById('debug');
+		traveledDistanceElement = document.getElementById('traveledDistance');
+		speedVisualizationElement = document.getElementById('speedVisualization');
 		updateDistanceTraveledOnScoreBoard();
 		setInterval(updateDistanceTraveledOnScoreBoard, 1000);
 	}
@@ -46,18 +46,18 @@
 		if (e.key === 'f') skier.turboOff();
 	});
 
-    function generateObstacles() {
-        let obstacleIndex = Math.floor(Math.random() * 100) % constants.OBSTACLE_MAP.length;
-        let obstacleInfo = constants.OBSTACLE_MAP[obstacleIndex];
-        
-        let random = Math.floor(Math.random() * 1000);
+	function generateObstacles() {
+		let obstacleIndex = Math.floor(Math.random() * 100) % constants.OBSTACLE_MAP.length;
+		let obstacleInfo = constants.OBSTACLE_MAP[obstacleIndex];
+		
+		let random = Math.floor(Math.random() * 1000);
 
-        if (random <= obstacleInfo.probability * 10) {
-            trees.push(new Entity(obstacleInfo.name));
-            mountain.element.appendChild(trees[trees.length - 1].element);
-            trees[trees.length - 1].finalizeSprite();
-        }
-    }
+		if (random <= obstacleInfo.probability * 10) {
+			trees.push(new Entity(obstacleInfo.name));
+			mountain.element.appendChild(trees[trees.length - 1].element);
+			trees[trees.length - 1].finalizeSprite();
+		}
+	}
 
 	function run() {
 		if (skier.isWalking()) {
@@ -67,8 +67,7 @@
 
 			trees.forEach(function(tree, index, obj) {
 				if (tree.mustBeDrawn) {
-                    tree.update(skier.getSpeed());
-                    console.log(tree.element.style.backgroundSize);
+					tree.update(skier.getSpeed());
 				} else {
 					obj.splice(index, 1); // remove do array de árvores aquela que está fora da tela
 				}
@@ -81,7 +80,7 @@
 				if (!tree.wasHitBySkier) {
 					// para garantir que o skier não acertará essa mesma árvore assim que se levantar
 					if (tree.checkCollisionWithSkier(skier)) {
-                        skier.sufferTreeHit();
+						skier.sufferTreeHit();
 					}
 				}
 			});

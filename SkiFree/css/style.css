@@ -35,6 +35,8 @@
 
 .rock {
     background-image: url(../imgs/rock.png);
+    width: 50px;
+    height: 40px;
     position: absolute;
 }
 
