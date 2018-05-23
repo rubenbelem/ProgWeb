@@ -9,7 +9,7 @@ class Skier {
 		this.direction = constants.SKIER_DIRECTION.FRONT; //0-esquerda;1-frente;2-direita
 		this.element.className = this.direction;
 		this.top = parseInt(constants.SIZE_Y / 2) - 100;
-		this.left = parseInt(constants.SIZE_X / 2) - 7;
+		this.left = parseInt(constants.SIZE_X / 2);
 		this.updateGraphicPosition();
 		
 	}

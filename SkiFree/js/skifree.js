@@ -1,13 +1,10 @@
 (function() {
 	const FPS = 60;
-	const SIZE_X = 300;
-	const SIZE_Y = 400;
-	const TREE_PROB = 3;
+	const TREE_PROB = 2;
 	var gameLoop;
 	var mountain;
 	
 	var skier;
-	
 	var trees = [];
 
 	function init() {
@@ -29,15 +26,24 @@
 			mountain.element.appendChild(tree.element);
 			trees.push(tree);
 		}
+
+		skier.walk();
+
 		trees.forEach(function(tree, index, obj) {
-			if (tree.mustBeDrawn)
+			if (tree.mustBeDrawn) {
 				tree.update(skier.getSpeed());
+
+				if (!tree.wasHitBySkier)
+					tree.checkCollisionWithSkier(skier);
+			}
 			else {
 				obj.splice(index, 1);
 			}
 		});
 		
-		skier.walk();
+		
+
+
 	}
 
 	init();
