@@ -45,10 +45,26 @@
    border: 1px solid black;
    position: relative;
    overflow: hidden;
+   float:left;
 }
 
 #skier {
    position: absolute;
 }
 
+#scoreboard {
+    padding: 20px;
+    border: 2px solid black;
+    float: left;
+    margin-left: 10px;
+    
+}
 
+#scoreboard p {
+    display: inline;
+
+}
+
+.scoreboard-item {
+    font-family: 'Courier New', Courier, monospace;
+}

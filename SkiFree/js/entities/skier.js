@@ -3,16 +3,29 @@ class Skier {
 		this.element.style.top = this.top.toString() + 'px';
 		this.element.style.left = this.left.toString() + 'px';
 	}
+	
 	constructor() {
-		this.speed = 3;
+		this.speed = constants.SKIER_MIN_SPEED;
+		this.distanceTraveledInPixels = 0.0;
+		this.accel = 0.1;
+		this.decel = 0.06;
+		this.isTurboOn = false;
 		this.element = document.getElementById('skier');
-		this.direction = constants.SKIER_DIRECTION.FRONT; //0-esquerda;1-frente;2-direita
+		this.direction = constants.SKIER_DIRECTION.FRONT;
 		this.element.className = this.direction;
 		this.top = parseInt(constants.SIZE_Y / 2) - 100;
 		this.left = parseInt(constants.SIZE_X / 2);
 		this.updateGraphicPosition();
 		this.walking = true;
 		this.canStandUp = false;
+	}
+
+	turboOn() {
+		this.isTurboOn = true;
+	}
+
+	turboOff() {
+		this.isTurboOn = false;
 	}
 
 	getSpeed() {
@@ -56,24 +69,43 @@ class Skier {
 	}
 
 	sufferTreeHit() {
+		this.isTurboOn = false;
 		this.walking = false;
 		this.element.className = 'skier-ouch';
 		this.canStandUp = false;
+		this.speed = constants.SKIER_MIN_SPEED;
 		setTimeout(() => {
 			this.element.className ='skier-after-tree-hit'; 
 			setTimeout(() => this.canStandUp = true, 600);
 		}, 1400);
 	}
 
+	getDistanceTraveledInPixels() {
+		return this.distanceTraveledInPixels;
+	}
+
 	walk() {
 		if (this.isOutOfBounds()) return;
 		if (!this.walking) return;
+		
+		this.distanceTraveledInPixels += this.speed;
+
+		if (this.isTurboOn) {
+			if (this.speed < 7)
+				this.speed += this.accel;
+			else this.speed = constants.SKIER_MAX_SPEED;
+		}
+		else {
+			if (this.speed > 2)
+				this.speed -= this.decel;
+			else this.speed = constants.SKIER_MIN_SPEED;
+		}
 
 		if (this.direction === constants.SKIER_DIRECTION.LEFT) {
-			this.left = parseInt(this.left) - this.speed;
+			this.left -= this.speed * 0.8;
 		}
 		if (this.direction === constants.SKIER_DIRECTION.RIGHT) {
-			this.left = parseInt(this.left) + this.speed;
+			this.left += this.speed * 0.8;
 		}
 		this.updateGraphicPosition();
 	}

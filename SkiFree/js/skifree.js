@@ -1,16 +1,30 @@
 (function() {
 	const FPS = 60;
 	const TREE_PROB = 2;
-	var gameLoop;
-	var mountain;
+	let gameLoop;
+	let mountain;
+	let skier;
+	let trees = [];
+	let cycle;
 
-	var skier;
-	var trees = [];
+	function calculateDistanceTraveled(distanceTraveledinPixels) {
+		return distanceTraveledinPixels / FPS;
+	}
+
+	function updateDistanceTraveledOnScoreBoard() {
+		document.getElementById('traveledDistance').innerHTML = calculateDistanceTraveled(skier.getDistanceTraveledInPixels()).toFixed(2);
+
+		document.getElementById('speedVisualization').innerHTML = skier.getSpeed().toFixed(2);
+	}
 
 	function init() {
 		mountain = new Mountain();
 		skier = new Skier();
 		gameLoop = setInterval(run, 1000 / FPS);
+		cycle = 1;
+		
+		updateDistanceTraveledOnScoreBoard();
+		setInterval(updateDistanceTraveledOnScoreBoard, 1000);
 	}
 
 	window.addEventListener('keydown', function(e) {
@@ -20,6 +34,11 @@
 			if (!skier.isWalking()) skier.standUp();
 			skier.changeDirection(constants.SKIER_DIRECTION.FRONT);
 		}
+		else if (e.key === 'f') skier.turboOn();
+	});
+
+	window.addEventListener('keyup', function(e) {
+		if (e.key === 'f') skier.turboOff();
 	});
 
 	function skierHitByTreeAction() {
@@ -27,8 +46,10 @@
 	}
 
 	function run() {
+		
+
 		if (skier.isWalking()) {
-			var random = Math.floor(Math.random() * 1000);
+			let random = Math.floor(Math.random() * 1000);
 			if (random <= TREE_PROB * 10) {
 				trees.push(new Tree());
 				mountain.element.appendChild(trees[trees.length - 1].element);
