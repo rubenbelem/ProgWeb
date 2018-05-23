@@ -33,12 +33,29 @@
    height: 35px;
 }
 
+.rock {
+    background-image: url(../imgs/rock.png);
+    position: absolute;
+}
+
 .tree {
-   background-image: url(obstacles.png);
-   background-position: -0px -31px;   
-   width: 28px;
-   height: 32px;   
+   background-image: url(../imgs/tree.png);
    position: absolute;
+}
+
+.bush {
+    background-image: url(../imgs/bush.png);
+    position: absolute;
+}
+
+.log {
+    background-image: url(../imgs/log.png);
+    position: absolute;
+}
+
+.tall-tree {
+    background-image: url(../imgs/talltree.png);
+    position: absolute;
 }
 
 #mountain {

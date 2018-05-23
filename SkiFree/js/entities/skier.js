@@ -8,13 +8,16 @@ class Skier {
 		this.speed = constants.SKIER_MIN_SPEED;
 		this.distanceTraveledInPixels = 0.0;
 		this.accel = 0.1;
-		this.decel = 0.06;
+		this.decel = 0.04;
 		this.isTurboOn = false;
 		this.element = document.getElementById('skier');
 		this.direction = constants.SKIER_DIRECTION.FRONT;
-		this.element.className = this.direction;
-		this.top = parseInt(constants.SIZE_Y / 2) - 100;
-		this.left = parseInt(constants.SIZE_X / 2);
+        this.element.className = this.direction;
+        
+        //Coordenadas
+        this.top = parseInt(constants.SIZE_Y / 2) - 100;
+        this.left = parseInt(constants.SIZE_X / 2);
+        
 		this.updateGraphicPosition();
 		this.walking = true;
 		this.canStandUp = false;
@@ -76,8 +79,8 @@ class Skier {
 		this.speed = constants.SKIER_MIN_SPEED;
 		setTimeout(() => {
 			this.element.className ='skier-after-tree-hit'; 
-			setTimeout(() => this.canStandUp = true, 600);
-		}, 1400);
+			setTimeout(() => this.canStandUp = true, 200);
+		}, 900);
 	}
 
 	getDistanceTraveledInPixels() {
@@ -89,7 +92,6 @@ class Skier {
 		if (!this.walking) return;
 		
 		this.distanceTraveledInPixels += this.speed;
-
 		if (this.isTurboOn) {
 			if (this.speed < 7)
 				this.speed += this.accel;
@@ -106,7 +108,8 @@ class Skier {
 		}
 		if (this.direction === constants.SKIER_DIRECTION.RIGHT) {
 			this.left += this.speed * 0.8;
-		}
+        }
+        
 		this.updateGraphicPosition();
 	}
 }

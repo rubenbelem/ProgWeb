@@ -1,28 +1,33 @@
 (function() {
 	const FPS = 60;
-	const TREE_PROB = 2;
+	const TREE_PROB = 4;
 	let gameLoop;
 	let mountain;
 	let skier;
 	let trees = [];
 	let cycle;
+    let traveledDistanceElement;
+    let speedVisualizationElement;
+    let debugElement;
 
 	function calculateDistanceTraveled(distanceTraveledinPixels) {
-		return distanceTraveledinPixels / FPS;
+		return distanceTraveledinPixels / FPS * 10;
 	}
 
 	function updateDistanceTraveledOnScoreBoard() {
-		document.getElementById('traveledDistance').innerHTML = calculateDistanceTraveled(skier.getDistanceTraveledInPixels()).toFixed(2);
-
-		document.getElementById('speedVisualization').innerHTML = skier.getSpeed().toFixed(2);
+		traveledDistanceElement.innerHTML = calculateDistanceTraveled(skier.getDistanceTraveledInPixels()).toFixed(2);
+		speedVisualizationElement.innerHTML = skier.getSpeed().toFixed(2) * 10;
 	}
 
 	function init() {
 		mountain = new Mountain();
-		skier = new Skier();
+        skier = new Skier();
+
 		gameLoop = setInterval(run, 1000 / FPS);
-		cycle = 1;
-		
+        cycle = 1;
+        debugElement = document.getElementById('debug');
+        traveledDistanceElement = document.getElementById('traveledDistance');
+        speedVisualizationElement = document.getElementById('speedVisualization');
 		updateDistanceTraveledOnScoreBoard();
 		setInterval(updateDistanceTraveledOnScoreBoard, 1000);
 	}
@@ -41,25 +46,29 @@
 		if (e.key === 'f') skier.turboOff();
 	});
 
-	function skierHitByTreeAction() {
-		skier.sufferTreeHit();
-	}
+    function generateObstacles() {
+        let obstacleIndex = Math.floor(Math.random() * 100) % constants.OBSTACLE_MAP.length;
+        let obstacleInfo = constants.OBSTACLE_MAP[obstacleIndex];
+        
+        let random = Math.floor(Math.random() * 1000);
+
+        if (random <= obstacleInfo.probability * 10) {
+            trees.push(new Entity(obstacleInfo.name));
+            mountain.element.appendChild(trees[trees.length - 1].element);
+            trees[trees.length - 1].finalizeSprite();
+        }
+    }
 
 	function run() {
-		
-
 		if (skier.isWalking()) {
-			let random = Math.floor(Math.random() * 1000);
-			if (random <= TREE_PROB * 10) {
-				trees.push(new Tree());
-				mountain.element.appendChild(trees[trees.length - 1].element);
-			}
+			generateObstacles();
 	
 			skier.walk();
 
 			trees.forEach(function(tree, index, obj) {
 				if (tree.mustBeDrawn) {
-					tree.update(skier.getSpeed());
+                    tree.update(skier.getSpeed());
+                    console.log(tree.element.style.backgroundSize);
 				} else {
 					obj.splice(index, 1); // remove do array de árvores aquela que está fora da tela
 				}
@@ -72,7 +81,7 @@
 				if (!tree.wasHitBySkier) {
 					// para garantir que o skier não acertará essa mesma árvore assim que se levantar
 					if (tree.checkCollisionWithSkier(skier)) {
-						skierHitByTreeAction();
+                        skier.sufferTreeHit();
 					}
 				}
 			});
@@ -80,4 +89,4 @@
 	}
 
 	init();
-})();
+}());
