@@ -43,6 +43,11 @@
    position: absolute;
 }
 
+.burning-bush {
+    background-image: url(../imgs/burning-bush/burningbush.gif);
+    position: absolute;
+}
+
 .bush {
     background-image: url(../imgs/bush.png);
     position: absolute;
