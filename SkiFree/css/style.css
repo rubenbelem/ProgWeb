@@ -19,6 +19,20 @@
    height: 32px;
 }
 
+.skier-ouch {
+   background-image: url(skier.png);
+   background-position: -240px 0px;
+   width: 33px;
+   height: 34px;
+}
+
+.skier-after-tree-hit {
+   background-image: url(skier.png);
+   background-position: 0px -74px;
+   width: 32px;
+   height: 35px;
+}
+
 .tree {
    background-image: url(obstacles.png);
    background-position: -0px -31px;   

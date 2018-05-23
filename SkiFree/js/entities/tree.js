@@ -23,7 +23,9 @@ class Tree {
 		
 		if (rectA.x1 < rectB.x2 && rectA.x2 > rectB.x1 && rectA.y1 < rectB.y2 && rectA.y2 > rectB.y1) {
 			this.wasHitBySkier = true;
-			console.log("HITOU!");
+			return true;
 		}
+
+		return false;
 	}
 }
