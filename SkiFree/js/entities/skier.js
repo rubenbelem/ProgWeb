@@ -6,10 +6,12 @@ class Skier {
 	
 	constructor() {
 		this.life = 3;
+		this.isDead = false;
 		this.speed = constants.SKIER_MIN_SPEED;
 		this.distanceTraveledInPixels = 0.0;
 		this.accel = 0.1;
-		this.decel = 0.04;
+		this.decel = 0.08;
+        this.distanceTraveledUntilMonsterAppears = 0;
 		this.isTurboOn = false;
 		this.element = document.getElementById('skier');
 		this.direction = constants.SKIER_DIRECTION.FRONT;
@@ -82,9 +84,14 @@ class Skier {
 
 	sufferTreeHit() {
 		this.life -= 1;
+		if (this.life == 0) {
+            this.isDead = true;
+            this.element.className = 'skier-ouch';
+            return;
+        }
 		this.isTurboOn = false;
 		this.walking = false;
-		this.element.className = 'skier-ouch';
+		this.element.className = 'skier-fall';
 		this.canStandUp = false;
 		this.speed = constants.SKIER_MIN_SPEED;
 		this.loopFallAnimation = setInterval(() => {
@@ -109,13 +116,15 @@ class Skier {
 		if (!this.walking) return;
 		
 		this.distanceTraveledInPixels += this.speed;
+		this.distanceTraveledUntilMonsterAppears += this.speed;
+
 		if (this.isTurboOn) {
-			if (this.speed < 7)
+			if (this.speed < constants.SKIER_MAX_SPEED)
 				this.speed += this.accel;
 			else this.speed = constants.SKIER_MAX_SPEED;
 		}
 		else {
-			if (this.speed > 2)
+			if (this.speed > constants.SKIER_MIN_SPEED)
 				this.speed -= this.decel;
 			else this.speed = constants.SKIER_MIN_SPEED;
 		}

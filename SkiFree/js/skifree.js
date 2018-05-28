@@ -8,6 +8,8 @@
 	let speedVisualizationElement;
 	let debugElement;
 	let lifeRemainingElement;
+	let monster;
+	let isMonsterOnScreen;
 
 	function calculateDistanceTraveled(distanceTraveledinPixels) {
 		return distanceTraveledinPixels / constants.FPS * 10;
@@ -25,9 +27,11 @@
 	function init() {
 		mountain = new Mountain();
 		skier = new Skier();
-
+		//monster = new Monster();
+		isMonsterOnScreen = false;
 		gameLoop = setInterval(run, 1000 / constants.FPS);
 		cycle = 1;
+		distanceWalkedUntilMonsterAppears = 0;
 		debugElement = document.getElementById('debug');
 		traveledDistanceElement = document.getElementById('traveledDistance');
 		speedVisualizationElement = document.getElementById('speedVisualization');
@@ -38,9 +42,11 @@
 	}
 
 	window.addEventListener('keydown', function(e) {
+        if (skier.isDead) return;
 		if (e.key === 'ArrowLeft') skier.changeDirection(constants.SKIER_DIRECTION.LEFT);
 		else if (e.key === 'ArrowRight') skier.changeDirection(constants.SKIER_DIRECTION.RIGHT);
 		else if (e.key === 'ArrowDown') {
+			skier.speed = constants.SKIER_MIN_SPEED;
 			if (!skier.isWalking()) skier.standUp();
 			skier.changeDirection(constants.SKIER_DIRECTION.FRONT);
 		}
@@ -48,6 +54,7 @@
 	});
 
 	window.addEventListener('keyup', function(e) {
+        if (skier.isDead) return;
 		if (e.key === 'f') skier.turboOff();
 	});
 
@@ -63,6 +70,8 @@
 			switch(obstacleInfo.name) {
 				case 'mushroom': newObstacle = new Mushroom();
 					break;
+                case 'dog': newObstacle = new Dog();
+                    break;
 				default:
 					newObstacle = new Entity(obstacleInfo.name);
 			}
@@ -72,41 +81,73 @@
 		}
 	}
 
+	function stopUpdatingDogs() {
+        entities.forEach(function(obstacle, index, obj) {
+        	if (obstacle instanceof Dog) obstacle.stopUpdating();
+        });
+	}
+
 	function run() {
-		if (skier.isWalking()) {
-			generateObstacles();
-	
-			skier.walk();
+        if (skier.isDead) return;
+        if (skier.isWalking()) {
+            generateObstacles();
 
-			entities.forEach(function(obstacle, index, obj) {
-				if (obstacle.mustBeDrawn) {
-					obstacle.update(skier.getSpeed());
-				} else {
-					obj.splice(index, 1); // remove do array de árvores aquela que está fora da tela
-				}
-			});
+            skier.walk();
 
-			// Checagem de colisões
-			// Esse código precisou ser feito em outro forEach porque senão todas as árvores no array após a que foi colidida não seria atualizadas até que o skier voltasse a andar
-			// Isso considerando que é preciso atualizar todas as árvores para então checar as colisões
-			entities.forEach(function(obstacle) {
-				if (!obstacle.wasHitBySkier) {
-					// para garantir que o skier não acertará essa mesma árvore assim que se levantar
-					if (obstacle.checkCollisionWithSkier(skier)) {
-						if (obstacle instanceof Mushroom) {
-							skier.lifeUp();
-							obstacle.mustBeDrawn = false;
-							obstacle.element.style.visibility = "hidden";
+            entities.forEach(function (obstacle, index, obj) {
+                if (obstacle.mustBeDrawn) {
+                    obstacle.update(skier.getSpeed());
+                } else {
+                    obj.splice(index, 1); // remove do array de árvores aquela que está fora da tela
+                }
+            });
+
+            // Checagem de colisões
+            // Esse código precisou ser feito em outro forEach porque senão todas as árvores no array após a que foi colidida não seria atualizadas até que o skier voltasse a andar
+            // Isso considerando que é preciso atualizar todas as árvores para então checar as colisões
+            entities.forEach(function (obstacle) {
+                if (!obstacle.wasHitBySkier) {
+                    // para garantir que o skier não acertará essa mesma árvore assim que se levantar
+                    if (obstacle.checkCollisionWithSkier(skier)) {
+                        if (obstacle instanceof Mushroom) {
+                            skier.lifeUp();
+                            obstacle.mustBeDrawn = false;
+                            obstacle.element.style.visibility = "hidden";
                         }
                         else {
                             skier.sufferTreeHit();
+                            if (skier.isDead) {
+                                stopUpdatingDogs();
+                            }
                         }
                         updateSkierLifeOnScoreBoard();
-					}
-				}
-			});
+                    }
+                }
+            });
+        }
+		if (monster) {
+        	monster.seekSkier(skier);
+
+        	if (monster.top < -monster.element.clientHeight) {
+        		monster = null;
+        		isMonsterOnScreen = false;
+                skier.distanceTraveledUntilMonsterAppears =  0;
+			}
+
+			if (monster.checkCollisionWithSkier(skier)) {
+        		skier.element.style.visibility = 'hidden';
+        		skier.speed = 0;
+        		skier.isDead = true;
+                stopUpdatingDogs();
+				monster.element.className = 'eating';
+			}
 		}
-	}
+		console.log(skier.distanceTraveledUntilMonsterAppears);
+        if (calculateDistanceTraveled(skier.distanceTraveledUntilMonsterAppears) > 100 && !isMonsterOnScreen) {
+			monster = new Monster();
+            isMonsterOnScreen = true;
+        }
+    }
 
 	init();
 }());

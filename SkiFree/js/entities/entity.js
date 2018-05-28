@@ -7,7 +7,7 @@ class Entity {
 		this.mustBeDrawn = true;
 		this.wasHitBySkier = false;
     }
-    
+
 	checkCollisionWithSkier(skier) {
 		let rectA = new Rectangle(parseFloat(this.element.style.top), parseFloat(this.element.style.left), this.element.clientWidth, this.element.clientHeight);
 		let rectB = new Rectangle(skier.top, skier.left, skier.element.clientWidth, skier.element.clientHeight);

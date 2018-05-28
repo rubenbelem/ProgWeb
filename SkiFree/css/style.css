@@ -30,6 +30,13 @@
    z-index: 7;
 }
 
+.skier-fall{
+    background-image: url(skier.png);
+    background-position: -81px -74px;
+    width: 35px;
+    height: 35px;
+}
+
 .skier-after-tree-hit {
    background-image: url(skier.png);
    background-position: 0px -74px;
@@ -48,6 +55,13 @@
 .monster-right {
     background-image: url(../imgs/monster/monster_right.gif);
     width: 29px;
+    height: 43px;
+    position: absolute;
+}
+
+.eating {
+    background-image: url(../imgs/monster/eating.gif);
+    width: 35px;
     height: 43px;
     position: absolute;
 }
