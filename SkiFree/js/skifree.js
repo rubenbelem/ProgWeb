@@ -7,9 +7,14 @@
 	let traveledDistanceElement;
 	let speedVisualizationElement;
 	let debugElement;
+	let lifeRemainingElement;
 
 	function calculateDistanceTraveled(distanceTraveledinPixels) {
 		return distanceTraveledinPixels / constants.FPS * 10;
+	}
+
+	function updateSkierLifeOnScoreBoard() {
+		lifeRemainingElement.innerHTML = skier.life;
 	}
 
 	function updateDistanceTraveledOnScoreBoard() {
@@ -26,8 +31,9 @@
 		debugElement = document.getElementById('debug');
 		traveledDistanceElement = document.getElementById('traveledDistance');
 		speedVisualizationElement = document.getElementById('speedVisualization');
+		lifeRemainingElement = document.getElementById('lifeRemaining');
 		updateDistanceTraveledOnScoreBoard();
-		
+		updateSkierLifeOnScoreBoard();
 		setInterval(updateDistanceTraveledOnScoreBoard, 1000);
 	}
 
@@ -52,7 +58,16 @@
 		let random = Math.floor(Math.random() * 1000);
 
 		if (random <= obstacleInfo.probability * 10) {
-			entities.push(new Entity(obstacleInfo.name));
+			let newObstacle;
+
+			switch(obstacleInfo.name) {
+				case 'mushroom': newObstacle = new Mushroom();
+					break;
+				default:
+					newObstacle = new Entity(obstacleInfo.name);
+			}
+
+			entities.push(newObstacle);
 			mountain.element.appendChild(entities[entities.length - 1].element);
 		}
 	}
@@ -78,7 +93,15 @@
 				if (!obstacle.wasHitBySkier) {
 					// para garantir que o skier não acertará essa mesma árvore assim que se levantar
 					if (obstacle.checkCollisionWithSkier(skier)) {
-						skier.sufferTreeHit();
+						if (obstacle instanceof Mushroom) {
+							skier.lifeUp();
+							obstacle.mustBeDrawn = false;
+							obstacle.element.style.visibility = "hidden";
+                        }
+                        else {
+                            skier.sufferTreeHit();
+                        }
+                        updateSkierLifeOnScoreBoard();
 					}
 				}
 			});

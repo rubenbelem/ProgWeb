@@ -1,5 +1,5 @@
 class Tree extends Entity {
-	constructor(className) {
-		super(className);
+	constructor() {
+		super('tree');
 	}
 }
