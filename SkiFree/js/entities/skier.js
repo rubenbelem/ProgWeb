@@ -44,6 +44,7 @@ class Skier {
 	
 	standUp() {
 		if (this.canStandUp) {
+            skier.speed = constants.SKIER_MIN_SPEED;
 			this.walking = true;
 			this.canStandUp = false;
 		}
@@ -84,6 +85,7 @@ class Skier {
 
 	sufferTreeHit() {
 		this.life -= 1;
+		this.speed = 0;
 		if (this.life == 0) {
             this.isDead = true;
             this.element.className = 'skier-ouch';
@@ -93,7 +95,6 @@ class Skier {
 		this.walking = false;
 		this.element.className = 'skier-fall';
 		this.canStandUp = false;
-		this.speed = constants.SKIER_MIN_SPEED;
 		this.loopFallAnimation = setInterval(() => {
 			if ((this.timeFall / 60.0 * 1000) >= constants.FALL_ANIMATION_DURATION) {
 				clearInterval(this.loopFallAnimation);

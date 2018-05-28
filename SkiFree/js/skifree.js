@@ -1,4 +1,4 @@
-(function() {
+
 	let gameLoop;
 	let mountain;
 	let skier;
@@ -27,7 +27,6 @@
 	function init() {
 		mountain = new Mountain();
 		skier = new Skier();
-		//monster = new Monster();
 		isMonsterOnScreen = false;
 		gameLoop = setInterval(run, 1000 / constants.FPS);
 		cycle = 1;
@@ -46,7 +45,6 @@
 		if (e.key === 'ArrowLeft') skier.changeDirection(constants.SKIER_DIRECTION.LEFT);
 		else if (e.key === 'ArrowRight') skier.changeDirection(constants.SKIER_DIRECTION.RIGHT);
 		else if (e.key === 'ArrowDown') {
-			skier.speed = constants.SKIER_MIN_SPEED;
 			if (!skier.isWalking()) skier.standUp();
 			skier.changeDirection(constants.SKIER_DIRECTION.FRONT);
 		}
@@ -89,6 +87,14 @@
 
 	function run() {
         if (skier.isDead) return;
+        entities.forEach(function (obstacle, index, obj) {
+            if (obstacle.mustBeDrawn) {
+                if (obstacle instanceof Dog)
+                    obstacle.update(skier.getSpeed());
+            } else {
+                obj.splice(index, 1); // remove do array de árvores aquela que está fora da tela
+            }
+        });
         if (skier.isWalking()) {
             generateObstacles();
 
@@ -96,7 +102,8 @@
 
             entities.forEach(function (obstacle, index, obj) {
                 if (obstacle.mustBeDrawn) {
-                    obstacle.update(skier.getSpeed());
+                    if (!(obstacle instanceof Dog))
+                		obstacle.update(skier.getSpeed());
                 } else {
                     obj.splice(index, 1); // remove do array de árvores aquela que está fora da tela
                 }
@@ -118,6 +125,9 @@
                             skier.sufferTreeHit();
                             if (skier.isDead) {
                                 stopUpdatingDogs();
+                                setTimeout(() => {
+                                    document.getElementById('gameover').style.visibility = 'visible';
+                                }, 800);
                             }
                         }
                         updateSkierLifeOnScoreBoard();
@@ -136,6 +146,10 @@
 
 			if (monster.checkCollisionWithSkier(skier)) {
         		skier.element.style.visibility = 'hidden';
+                setTimeout(() => {
+                    document.getElementById('gameover').style.visibility = 'visible';
+				}, 2000);
+
         		skier.speed = 0;
         		skier.isDead = true;
                 stopUpdatingDogs();
@@ -143,11 +157,10 @@
 			}
 		}
 
-        if (calculateDistanceTraveled(skier.distanceTraveledUntilMonsterAppears) > 100 && !isMonsterOnScreen) {
+        if (calculateDistanceTraveled(skier.distanceTraveledUntilMonsterAppears) > 2000 && !isMonsterOnScreen) {
 			monster = new Monster();
             isMonsterOnScreen = true;
         }
     }
 
 	init();
-}());

@@ -10,18 +10,18 @@ const constants = {
 	},
 	SKIER_MIN_SPEED: 2,
 	SKIER_MAX_SPEED: 3.7,
-	MONSTER_SPEED_X: 3,
+	MONSTER_SPEED_X: 4,
 	MONSTER_SPEED_Y: 3,
 	MONSTER_RIGHT: 0,
 	MONSTER_LEFT: 1,
 	OBSTACLE_MAP: [
-		{ name: 'tree', probability: 20 },
-		{ name: 'rock', probability: 7 },
-		{ name: 'tall-tree', probability: 7 },
-		{ name: 'burning-bush', probability: 3 },
-		{ name: 'bush', probability: 10 },
-        { name: 'mushroom', probability: 1 },
-		{ name: 'log', probability: 5 },
-		{ name: 'dog', probability: 30 }
+		{ name: 'tree', probability: 30 },
+		{ name: 'rock', probability: 10 },
+		{ name: 'tall-tree', probability: 15 },
+		{ name: 'burning-bush', probability: 7 },
+		{ name: 'bush', probability: 12 },
+        { name: 'mushroom', probability: 2 },
+		{ name: 'log', probability: 10 },
+		{ name: 'dog', probability: 6 }
 	]
 };

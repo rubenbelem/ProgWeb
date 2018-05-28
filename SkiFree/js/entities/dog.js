@@ -30,6 +30,9 @@ class Dog extends Entity {
         if (parseFloat(this.element.style.top) < -this.element.clientHeight) {
             this.mustBeDrawn = false;
         }
+        if (parseFloat(this.element.style.left) > constants.SIZE_X) {
+            this.mustBeDrawn = false;
+        }
 
         if (this.isWalking) {
             this.element.style.left = parseFloat(this.element.style.left) + this.walkSpeed + 'px';
