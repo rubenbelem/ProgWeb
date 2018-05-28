@@ -142,7 +142,7 @@
 				monster.element.className = 'eating';
 			}
 		}
-		console.log(skier.distanceTraveledUntilMonsterAppears);
+
         if (calculateDistanceTraveled(skier.distanceTraveledUntilMonsterAppears) > 100 && !isMonsterOnScreen) {
 			monster = new Monster();
             isMonsterOnScreen = true;
