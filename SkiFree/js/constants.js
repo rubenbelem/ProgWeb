@@ -17,6 +17,6 @@ const constants = {
 		{ name: 'burning-bush', probability: 3 },
 		{ name: 'bush', probability: 10 },
 		{ name: 'log', probability: 5 },
-		{ name: 'dog', probability: 1 }
+		{ name: 'dog', probability: 3 }
 	]
 };

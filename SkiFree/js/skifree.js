@@ -1,9 +1,8 @@
 (function() {
-	const TREE_PROB = 4;
 	let gameLoop;
 	let mountain;
 	let skier;
-	let trees = [];
+	let entities = [];
 	let cycle;
 	let traveledDistanceElement;
 	let speedVisualizationElement;
@@ -53,9 +52,8 @@
 		let random = Math.floor(Math.random() * 1000);
 
 		if (random <= obstacleInfo.probability * 10) {
-			trees.push(new Entity(obstacleInfo.name));
-			mountain.element.appendChild(trees[trees.length - 1].element);
-			trees[trees.length - 1].finalizeSprite();
+			entities.push(new Entity(obstacleInfo.name));
+			mountain.element.appendChild(entities[entities.length - 1].element);
 		}
 	}
 
@@ -65,9 +63,9 @@
 	
 			skier.walk();
 
-			trees.forEach(function(tree, index, obj) {
-				if (tree.mustBeDrawn) {
-					tree.update(skier.getSpeed());
+			entities.forEach(function(obstacle, index, obj) {
+				if (obstacle.mustBeDrawn) {
+					obstacle.update(skier.getSpeed());
 				} else {
 					obj.splice(index, 1); // remove do array de árvores aquela que está fora da tela
 				}
@@ -76,10 +74,10 @@
 			// Checagem de colisões
 			// Esse código precisou ser feito em outro forEach porque senão todas as árvores no array após a que foi colidida não seria atualizadas até que o skier voltasse a andar
 			// Isso considerando que é preciso atualizar todas as árvores para então checar as colisões
-			trees.forEach(function(tree) {
-				if (!tree.wasHitBySkier) {
+			entities.forEach(function(obstacle) {
+				if (!obstacle.wasHitBySkier) {
 					// para garantir que o skier não acertará essa mesma árvore assim que se levantar
-					if (tree.checkCollisionWithSkier(skier)) {
+					if (obstacle.checkCollisionWithSkier(skier)) {
 						skier.sufferTreeHit();
 					}
 				}
