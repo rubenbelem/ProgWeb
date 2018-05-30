@@ -1,3 +1,6 @@
+Todos os erros foram identificados corretamente.
+Nota: 2.0
+
 Primeiro erro:
 
 Erro de síntaxe de comentário na linha 04.

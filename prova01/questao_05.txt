@@ -1,3 +1,6 @@
+Logs e conceitos reportados corretamente.
+Nota: 2.0
+
 commit 0d449a4675dc232aaccbaaf0df1376b2bceccd71
 Author: Rúben Belém <rubenbelem@gmail.com>
 Date:   Wed Apr 25 08:42:47 2018 -0400
@@ -119,3 +122,5 @@ Ele mostra os arquivos que ainda não estão incluídos na realização de um co
 
 b)
 Para definir regras que permitem o git ignorar diretórios, arquivos (por nome ou tipo), dentre outros. Esses arquivos, quando modificados, não são considerados como untracked files, e são excluídos do versionamento (uma razão a mais para se tomar cuidado com os arquivos e diretórios incluídos no .gitignore) .
+
+

@@ -1,3 +1,6 @@
+Conceito de hoisting e código corretos.
+Nota: 2.0
+
 Em Javascript, não interessando o local de definição de uma variável em um escopo, é possível *referenciá-la* em qualquer lugar desse escopo em que ela foi definida sem que haja um erro de "variável não definida", pois o interpretador do Javascript move a declaração das variáveis para o início. Isso é chamado hoisting.
 
 Porém, o hoisting move apenas a *declaração* da variável. Ou seja, se uma variável foi declarada no formato "var a = 5", o hoisting move para o topo do escopo apenas a declaração da variável <a> , sem o valor 5 atribuído.
