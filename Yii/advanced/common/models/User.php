@@ -56,15 +56,15 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
-            'auth_key' => 'Auth Key',
-            'password_hash' => 'Password Hash',
-            'password_reset_token' => 'Password Reset Token',
+            'username' => 'Nome de Usuário',
+            'auth_key' => 'Chave de Autenticação',
+            'password_hash' => 'Hash de senha',
+            'password_reset_token' => 'Token de redefinição de senha',
             'email' => 'Email',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'id_curso' => 'Id Curso',
+            'status' => 'Estado',
+            'created_at' => 'Criado em',
+            'updated_at' => 'Atualizado em',
+            'id_curso' => 'Id de Curso',
         ];
     }
 
