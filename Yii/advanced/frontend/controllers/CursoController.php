@@ -52,6 +52,7 @@ class CursoController extends Controller
      */
     public function actionView($id)
     {
+
         $model = Curso::findOne($id);
         if ($model === null) {
             $model = Curso::findOne(['sigla' => 'CC']);
