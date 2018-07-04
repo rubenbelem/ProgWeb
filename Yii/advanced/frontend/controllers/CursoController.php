@@ -52,8 +52,12 @@ class CursoController extends Controller
      */
     public function actionView($id)
     {
+        $modelStandard = Curso::findOne($id);
+        if ($modelStandard === null) {
+            $modelStandard = Curso::findOne(['sigla' => 'CC']);
+        }
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $modelStandard/*$this->findModel($id)*/,
         ]);
     }
 
