@@ -37,12 +37,13 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at', 'id_curso'], 'required'],
+            [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at', 'id_curso'], 'required', 'message' => 'Este campo é obrigatório'],
             [['status', 'created_at', 'updated_at', 'id_curso'], 'integer'],
-            [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
+            [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255, 'message' => 'Número máximo de caracteres atingido (255)'],
             [['auth_key'], 'string', 'max' => 32],
-            [['username'], 'unique'],
+            [['username'], 'unique', 'message' => 'O nome de usuário deve ser único'],
             [['email'], 'unique'],
+            [['email'], 'email', 'message' => 'Este email não está em um formato válido'],
             [['password_reset_token'], 'unique'],
             [['id_curso'], 'exist', 'skipOnError' => true, 'targetClass' => Curso::className(), 'targetAttribute' => ['id_curso' => 'id']],
         ];
