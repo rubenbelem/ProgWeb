@@ -2,9 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
+use common\models\User;
 /* @var $this yii\web\View */
 /* @var $model common\models\Curso */
+
 
 $this->registerCssFile('@web/css/curso-view.css');
 $this->title = $model->nome;
@@ -32,6 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'nome',
             'sigla',
             'descricao:ntext',
+            [
+                'label' => 'Número de Alunos',
+                'value' => User::find()->where('id_curso=' . strval($model->id))->count()
+            ],
         ],
     ]) ?>
 
