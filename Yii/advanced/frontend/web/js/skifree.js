@@ -125,8 +125,8 @@
                             skier.sufferTreeHit();
                             if (skier.isDead) {
                                 stopUpdatingDogs();
+                                SAVE_SCORE(calculateDistanceTraveled(skier.getDistanceTraveledInPixels()).toFixed(2));
                                 setTimeout(() => {
-                                    SAVE_SCORE(calculateDistanceTraveled(skier.getDistanceTraveledInPixels()).toFixed(2));
                                     document.getElementById('gameover').style.visibility = 'visible';
                                 }, 800);
                             }
@@ -147,6 +147,7 @@
 
 			if (monster.checkCollisionWithSkier(skier)) {
         		skier.element.style.visibility = 'hidden';
+                SAVE_SCORE(calculateDistanceTraveled(skier.getDistanceTraveledInPixels()).toFixed(2));
                 setTimeout(() => {
                     document.getElementById('gameover').style.visibility = 'visible';
 				}, 2000);

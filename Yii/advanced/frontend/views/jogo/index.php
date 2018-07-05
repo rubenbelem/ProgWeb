@@ -37,6 +37,7 @@ $this->registerJsFile('@web/js/skifree.js');
 
 ?>
 <div class="site-index">
+    <?= Html::a('Verificar Ranking', ['/jogo/ranking'], ['class' => 'btn btn-lg btn-warning']) ?>
     <div class="body-content">
 
         <div id="mountain">

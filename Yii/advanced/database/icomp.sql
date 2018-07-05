@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 04-Jul-2018 às 04:59
+-- Generation Time: 05-Jul-2018 às 06:27
 -- Versão do servidor: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -35,6 +35,14 @@ CREATE TABLE `curso` (
   `descricao` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `curso`
+--
+
+INSERT INTO `curso` (`id`, `nome`, `sigla`, `descricao`) VALUES
+(2, 'Sistemas de Informação', 'SI', 'Um curso legal'),
+(3, 'Ciência da Computação', 'CC', 'Um curso sensacional');
+
 -- --------------------------------------------------------
 
 --
@@ -47,6 +55,17 @@ CREATE TABLE `jogada` (
   `pontuacao` int(11) NOT NULL,
   `data_hora` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `jogada`
+--
+
+INSERT INTO `jogada` (`id`, `id_user`, `pontuacao`, `data_hora`) VALUES
+(4, 3, 133, '2018-07-05 06:03:35'),
+(5, 3, 300, '2018-07-05 06:16:27'),
+(6, 3, 125, '2018-07-05 06:16:36'),
+(7, 3, 851, '2018-07-05 06:17:35'),
+(8, 4, 2199, '2018-07-05 06:20:03');
 
 -- --------------------------------------------------------
 
@@ -85,6 +104,16 @@ CREATE TABLE `user` (
   `updated_at` int(11) NOT NULL,
   `id_curso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Extraindo dados da tabela `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`, `id_curso`) VALUES
+(1, 'Rúben', 'hahaha', 'hahaha', 'hahaha', 'rubenbelem@gmail.com', 1, 1530727491, 1530727491, 2),
+(2, 'rubelem', 'J68zj5HzAmc3i3Nd8hDEDSyXlqnS5drE', '$2y$13$zZEcQYirJ.G9djb7vua4j.Wi0dyiDobJiZPO1/U2IH1klx8sFNT2.', NULL, 'oi@gmail.com', 10, 1737454825, 1737454825, 3),
+(3, 'tumateseco', 'IUmKFQ74_B4u-r9UArWo9DSNmLvbPV2G', '$2y$13$W6bepMRh9SXXwMWv7KyMyeGvUumUUqFX9IW8tL1VPBh26YDvTYaVm', NULL, 'tumate@gmail.com', 10, 1530747308, 1530747308, 3),
+(4, 'cubomagico', 'x7XeLzaUu36FJ320E28fjQ5f3BVUtefI', '$2y$13$db0a03jYOkZBtMVzaf6NDeU5nLimXzSB7P0JzrcahYernQW17zgju', NULL, 'rubelem@gmail.com', 10, 1530764327, 1530764327, 2);
 
 --
 -- Indexes for dumped tables
@@ -127,19 +156,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `jogada`
 --
 ALTER TABLE `jogada`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

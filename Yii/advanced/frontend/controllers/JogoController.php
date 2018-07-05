@@ -12,11 +12,12 @@ use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
-
+use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
 use common\models\Jogada;
+use common\models\User;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -30,6 +31,16 @@ class JogoController extends Controller
     public function actionIndex()
     {
         return $this->render('index', [
+        ]);
+    }
+
+    public function actionRanking() {
+        $query = Jogada::find()->orderBy(['pontuacao' => SORT_DESC]);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+        return $this->render('ranking', [
+            'dataProvider' => $dataProvider
         ]);
     }
 
