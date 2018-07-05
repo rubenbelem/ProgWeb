@@ -16,6 +16,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use common\models\Jogada;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -30,5 +31,20 @@ class JogoController extends Controller
     {
         return $this->render('index', [
         ]);
+    }
+
+    public function actionSave($pontuacao)
+    {
+        if (!Yii::$app->user->isGuest) { // Checando se o usuário está logado
+            $jogada = new Jogada();
+            $jogada->id_user = Yii::$app->user->id;
+            $jogada->pontuacao = $pontuacao;
+            $jogada->data_hora = date_create()->format('Y-m-d H:i:s');
+            if ($jogada->save()) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
     }
 }

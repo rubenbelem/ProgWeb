@@ -48,12 +48,12 @@
 			if (!skier.isWalking()) skier.standUp();
 			skier.changeDirection(constants.SKIER_DIRECTION.FRONT);
 		}
-		else if (e.key === 'f') skier.turboOn();
+		else if (e.key === 'f' || e.key === 'F') skier.turboOn();
 	});
 
 	window.addEventListener('keyup', function(e) {
         if (skier.isDead) return;
-		if (e.key === 'f') skier.turboOff();
+		if (e.key === 'f' || e.key === 'F') skier.turboOff();
 	});
 
 	function generateObstacles() {
@@ -126,6 +126,7 @@
                             if (skier.isDead) {
                                 stopUpdatingDogs();
                                 setTimeout(() => {
+                                    SAVE_SCORE(calculateDistanceTraveled(skier.getDistanceTraveledInPixels()).toFixed(2));
                                     document.getElementById('gameover').style.visibility = 'visible';
                                 }, 800);
                             }
