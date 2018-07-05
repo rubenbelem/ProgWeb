@@ -4,9 +4,11 @@ namespace frontend\controllers;
 
 use Yii;
 use common\models\Curso;
+use common\models\User;
 use common\models\CursoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
 
 /**
@@ -128,5 +130,16 @@ class CursoController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionUsers($id) {
+        $query = User::find()->where('id_curso=' . strval($id));
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+        return $this->render('listusers', [
+            'dataProvider' => $dataProvider,
+            'curso' => $this->findModel($id)
+        ]);
     }
 }
