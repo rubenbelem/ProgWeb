@@ -13,7 +13,7 @@ $this->title = 'Instituto de Computação';
 
             No ensino de graduação, o DCC atua principalmente nos cursos de Ciência da Computação, Sistemas de Informação, Engenharia de Software e Engenharia da Computação. Também oferece disciplinas básicas de computação para 30 cursos de graduação da UFAM em Manaus.</p>
         <br/>
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+        <p><?= Html::a('Iniciar Jogo!', ['/jogo/index'], ['class' => 'btn btn-lg btn-success']) ?></p>
     </div>
 
     <div class="body-content">
